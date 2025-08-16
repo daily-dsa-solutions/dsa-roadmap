@@ -6,14 +6,14 @@ Given an array of integers `nums` and an integer `target`, return indices of the
 
 ## 🤔 Approach Explained
 
-This solution employs a hash map (dictionary in Python) to efficiently find the two numbers that sum up to the target.  The algorithm iterates through the input array `nums` only once. For each number encountered, it calculates the `complement` needed to reach the `target`. It then checks if this `complement` already exists as a key in the `num_map`. If it does, it means the pair has been found, and the indices are returned.  If the complement is not found, the current number and its index are added to the `num_map` for future comparisons.  This avoids nested loops, resulting in a significant performance improvement compared to brute-force approaches. The use of a hash map allows for O(1) average-case lookup time.
+This solution employs a hash map (dictionary in Python) to efficiently find the pair of numbers that sum up to the target.  Instead of using nested loops which would result in O(n^2) time complexity, it iterates through the input array `nums` only once.  For each number encountered, it calculates the `complement` needed to reach the `target`. It then checks if this `complement` already exists as a key in the `num_map`. If it does, it means we've found the pair, and their indices are returned. If not, the current number and its index are added to the `num_map` for future checks.  This ensures that we only need to traverse the array once to find the solution. The use of a hash map allows for O(1) average-case lookup time.
 
 
-## complexity_analysis
+##  complexity_analysis
 
-- **Time Complexity:** O(n) - The algorithm iterates through the input array once.  Hash map lookups (on average) take constant time.
+- **Time Complexity:** O(n). The algorithm iterates through the input array `nums` once.  Hash map lookups (`complement in num_map`) are on average O(1).
 
-- **Space Complexity:** O(n) - In the worst-case scenario, the `num_map` could store all the numbers from the input array.  The space used is proportional to the size of the input.
+- **Space Complexity:** O(n). In the worst-case scenario, the `num_map` could store all the elements of `nums`, resulting in linear space usage.
 
 
 ---
